@@ -6,6 +6,11 @@ object::object()
 	rectobject.setSize(sf::Vector2f(128, 128));
 	rectobject.setPosition(200,200);
 	rectobject.setFillColor(sf::Color::Blue);
+	sprite.setScale(0.115, 0.115);
+}
+void object::update()
+{
+	sprite.setPosition(rectobject.getPosition());
 }
 void object::checkbox()
 {

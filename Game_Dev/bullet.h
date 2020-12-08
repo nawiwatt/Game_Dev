@@ -4,10 +4,28 @@
 class bullet : public entity
 {
 public:
-	int bulletspeed = 5;
-	int damege = 5;
+	sf::Sprite gunsprite;
+	sf::Sprite gungui;
+	sf::Sprite maggui;
+	sf::Sprite lasergui;
+	sf::RectangleShape Lasers;
+	int weapontype = 4;
+	int weapondirection = 2;
 	int direction = 1;
-
+	bool bulletin = true;
+	//weapon
+	int weaponrarity = 5;
+	float bulletspeed;
+	int bulletdamage;
+	int bulletfirerate;
+	float reloadspeed;
+	int weaponmag;
+	int magtype = 1;
+	bool laserequiped = false;
+	int laserdirection = 2;
 	bullet();
 	void Bullet();
+	void WeaponCheck();
+	void Weaponraritycheck();
+	void equipmentcheck();
 };

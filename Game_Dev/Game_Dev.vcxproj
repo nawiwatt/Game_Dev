@@ -146,17 +146,30 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bullet.cpp" />
+    <ClCompile Include="Crate.cpp" />
     <ClCompile Include="enemy.cpp" />
+    <ClCompile Include="entity.cpp" />
+    <ClCompile Include="gui.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="map.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="randompower.cpp" />
+    <ClCompile Include="Textdisplay.cpp" />
+    <ClCompile Include="Vending.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
+    <ClInclude Include="Crate.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="entity.h" />
+    <ClInclude Include="gui.h" />
+    <ClInclude Include="map.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="randompower.h" />
+    <ClInclude Include="Textdisplay.h" />
+    <ClInclude Include="Vending.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

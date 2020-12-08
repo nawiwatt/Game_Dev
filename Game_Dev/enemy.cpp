@@ -7,42 +7,32 @@ enemy::enemy()
 	rect.setSize(sf::Vector2f(64, 64));
 	rect.setFillColor(sf::Color::Green);
 	sprite.setScale(2, 2);
-	sprite.setTextureRect(sf::IntRect(0, 0, 64, 64));
+	//sprite.setTextureRect(sf::IntRect(0, 0, 64, 64));
+	sprite.setOrigin(16, 16);
+	diesprite.setScale(2, 2);
+	diesprite.setOrigin(16, 16);
+	hpbar.setSize(sf::Vector2f(60, 7));
+	hpbar.setFillColor(sf::Color::Green);
 }
 void enemy::update()
 {
-	sprite.setPosition(rect.getPosition());
+	hpbar.setSize(sf::Vector2f(60 - 60 * (totalhp - hp) / totalhp, 7));
+	hpbar.setPosition(rect.getPosition().x, rect.getPosition().y - 35);
+	if (alive == false)
+	{
+		diesprite.setPosition(rect.getPosition());
+	}
+	else
+	{
+		sprite.setPosition(rect.getPosition());
+	}
 }
 
 void enemy::updatemovement()
 {
-	direction = generateRandom(0,6);
-	if (direction ==1)
-	{
-			rect.move(-movespeed, 0);
-			sprite.setTextureRect(sf::IntRect(64 * runtime, 0, 64, 64));
-	}
-	else if (direction==2)
-	{
-			rect.move(movespeed, 0);
-			sprite.setTextureRect(sf::IntRect(64 * runtime, 64, 64, 64));
-	}
-	else if (direction==3)
-	{
-			rect.move(0, -movespeed);
-			sprite.setTextureRect(sf::IntRect(64 * runtime, 0, 64, 64));
-	}
-	else if (direction==4)
-	{
-			rect.move(0, movespeed);
-			sprite.setTextureRect(sf::IntRect(64 * runtime, 64, 64, 64));
-	}
-	else
-	{
-		sprite.setTextureRect(sf::IntRect(0, 0, 64, 64));
-	}
-	runtimecount++;
-	if (runtimecount == 100)
+
+	runtimecount ++;
+	if (runtimecount >= typemovement)
 	{
 		runtime++;
 		runtimecount = 0;
@@ -50,101 +40,79 @@ void enemy::updatemovement()
 	if (runtime == 9)
 	{
 		runtime = 0;
-		direction = generateRandom(0,6);
-	if (direction ==1)
-	{
-			rect.move(-movespeed, 0);
-			sprite.setTextureRect(sf::IntRect(64 * runtime, 0, 64, 64));
 	}
-	else if (direction==2)
+	directioncooldown++;
+	if (directioncooldown >= runcooldown)
 	{
-			rect.move(movespeed, 0);
-			sprite.setTextureRect(sf::IntRect(64 * runtime, 64, 64, 64));
-	}
-	else if (direction==3)
-	{
-			rect.move(0, -movespeed);
-			sprite.setTextureRect(sf::IntRect(64 * runtime, 0, 64, 64));
-	}
-	else if (direction==4)
-	{
-			rect.move(0, movespeed);
-			sprite.setTextureRect(sf::IntRect(64 * runtime, 64, 64, 64));
-	}
-	else
-	{
-		sprite.setTextureRect(sf::IntRect(0, 0, 64, 64));
-	}
-	}
-	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-	{
+		if (enemytype == 1)
+		{
+			direction = 3;
+		}
+		else
+		{
+			direction = generateRandom(0, 5);
+		}
 		
-		if (rect.getPosition().x >= 100)
-		{
-			rect.move(-movespeed, 0);
-			sprite.setTextureRect(sf::IntRect(64 * runtime, 0, 64, 64));
-			direction = 1;
-		}
-		else
-		{
-			sprite.setTextureRect(sf::IntRect(64 * runtime, 0, 64, 64));
-			direction = 1;
-		}
+		directioncooldown = 0;
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	
+	if (rect.getPosition().x >= 300 && direction > 1)
 	{
-		if (rect.getPosition().x <= 972)
-		{
-			rect.move(movespeed, 0);
-			sprite.setTextureRect(sf::IntRect(64 * runtime, 64, 64, 64));
-			direction = 2;
-		}
-		else
-		{
-			sprite.setTextureRect(sf::IntRect(64 * runtime, 64, 64, 64));
-			direction = 2;
-		}
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-	{
-		if (rect.getPosition().y >= 50)
-		{
-			rect.move(0, -movespeed);
-			sprite.setTextureRect(sf::IntRect(64 * runtime, 0, 64, 64));
-			direction = 1;
-		}
-		else
-		{
-			sprite.setTextureRect(sf::IntRect(64 * runtime, 0, 64, 64));
-			direction = 1;
-		}
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-	{
-		if (rect.getPosition().y <= 622)
-		{
-			rect.move(0, movespeed);
-			sprite.setTextureRect(sf::IntRect(64 * runtime, 64, 64, 64));
-			direction = 2;
-		}
-		else
-		{
-			sprite.setTextureRect(sf::IntRect(64 * runtime, 64, 64, 64));
-			direction = 2;
-		}
+			rect.move(-movespeed, 0 );
+			sprite.setTextureRect(sf::IntRect(64 * runtime, 64*enemytype, 64, 64));
 	}
 	else
 	{
-		sprite.setTextureRect(sf::IntRect(0, 0, 64, 64));
+		sprite.setTextureRect(sf::IntRect(0, 64* enemytype, 64, 64));
 	}
+}
+
+void enemy::enemydie()
+{
 	runtimecount++;
-	if (runtimecount == 100)
+	if (runtimecount >= 30 && runtime < 10)
 	{
 		runtime++;
 		runtimecount = 0;
 	}
-	if (runtime == 9)
+	if (runtime >= 10)
 	{
-		runtime = 0;
-	}*/
+		died = true;
+	}
+	diesprite.setTextureRect(sf::IntRect(64 * runtime, 0, 64, 64));
+}
+
+
+void enemy::typeupdate()
+{
+	if (enemytype == 0)
+	{
+		movespeed = 0.1;
+		coindropmax = 10;
+		powerdropchance = 20;
+		totalhp = 200;
+		hp = 200;
+		typemovement = 35;
+		runcooldown = 200;
+	}
+	else if (enemytype == 1)
+	{
+		movespeed = 0.15;
+		coindropmax = 12;
+		powerdropchance = 15;
+		totalhp = 150;
+		hp = 150;
+		typemovement = 15;
+		runcooldown = 180;
+	}
+	else if (enemytype == 2)
+	{
+		movespeed = 0.05;
+		coindropmax = 20;
+		powerdropchance = 15;
+		totalhp = 500;
+		hp = 500;
+		typemovement = 40;
+		runcooldown = 300;
+	}
 }
