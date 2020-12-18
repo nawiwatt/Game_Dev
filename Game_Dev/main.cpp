@@ -401,7 +401,7 @@ int main()
 		// background music
 		sf::Time elapseSong = musicClock.getElapsedTime();
 		sf::Time elapseSong2 = musicClock2.getElapsedTime();
-		//std::cout << elapseSong.asSeconds() << std::endl;
+		std::cout << elapseSong2.asSeconds() << std::endl;
 		if (windowtype != 3 && ingame == false && elapseSong.asSeconds() > 95)
 		{
 			BgSound1.play();
@@ -411,7 +411,7 @@ int main()
 		{
 			BgSound1.stop();
 		}
-		if (windowtype == 3  && elapseSong.asSeconds() > 90)
+		if (windowtype == 3  && elapseSong2.asSeconds() > 90)
 		{
 			mainSound.play();
 			musicClock2.restart();
