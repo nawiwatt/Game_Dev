@@ -13,9 +13,18 @@ player::player()
 void player::update()
 {
 	sprite.setPosition(rect.getPosition());
+	slowed = false;
 }
 void player::updatemovement()
 {
+	if (slowed == true)
+	{
+		movespeed = 0.2;
+	}
+	else
+	{
+		movespeed = 0.6;
+	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		if (rect.getPosition().x >= 60)
@@ -34,7 +43,7 @@ void player::updatemovement()
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		if (rect.getPosition().x <= 972)
+		if (rect.getPosition().x <= 270)
 		{
 			rect.move(movespeed, 0);
 			sprite.setTextureRect(sf::IntRect(64 * runtime, 64, 64, 64));

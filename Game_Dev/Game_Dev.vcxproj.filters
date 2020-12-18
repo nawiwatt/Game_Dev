@@ -51,6 +51,18 @@
     <ClCompile Include="Vending.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Radioactive.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Totems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -84,6 +96,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Vending.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Radioactive.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Totems.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -9,12 +9,12 @@ public:
 	sf::Sprite maggui;
 	sf::Sprite lasergui;
 	sf::RectangleShape Lasers;
-	int weapontype = 4;
+	int weapontype = 1;
 	int weapondirection = 2;
 	int direction = 1;
 	bool bulletin = true;
 	//weapon
-	int weaponrarity = 5;
+	int weaponrarity = 1;
 	float bulletspeed;
 	int bulletdamage;
 	int bulletfirerate;

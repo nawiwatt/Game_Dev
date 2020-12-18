@@ -54,7 +54,7 @@ void bullet::WeaponCheck()
 	{
 		//dmr 1.5
 		bulletspeed = 9;
-		bulletdamage = 40;
+		bulletdamage = 30;
 		bulletfirerate = 6;
 		reloadspeed = 4;
 		weaponmag = 7;
@@ -137,7 +137,7 @@ void bullet::WeaponCheck()
 		bulletdamage = 90;
 		bulletfirerate = 3;
 		reloadspeed = 5;
-		weaponmag = 9;
+		weaponmag = 7;
 		if (weapondirection == 2)
 		{
 			gunsprite.setTextureRect(sf::IntRect(320, 0, 64, 64));
@@ -154,7 +154,7 @@ void bullet::WeaponCheck()
 	{
 		//dmr 4.5
 		bulletspeed = 20;
-		bulletdamage = 300;
+		bulletdamage = 250;
 		bulletfirerate = 2;
 		reloadspeed = 6;
 		weaponmag = 5;
