@@ -23,7 +23,7 @@
 #include"SFML/Audio.hpp"
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(1200, 800), "Nawiwat 63010522",sf::Style::Close);
+	sf::RenderWindow window(sf::VideoMode(1200, 800), "Walls",sf::Style::Close);
 	window.setFramerateLimit(300);
 	//sound
 	sf::SoundBuffer ClickSound;
@@ -108,9 +108,16 @@ int main()
 	gamename.setFont(hpfont);
 	gamename.setCharacterSize(150);
 	gamename.setPosition(30, 30);
-	gamename.setString("Bruh");
+	gamename.setString("Walls");
 	gamename.setOutlineThickness(3);
 	gamename.setFillColor(sf::Color::Blue);
+	sf::Text Credit;
+	Credit.setFont(hpfont);
+	Credit.setCharacterSize(30);
+	Credit.setPosition(30, 730);
+	Credit.setString("BY NAWIWAT 63010522");
+	Credit.setOutlineThickness(3);
+	Credit.setFillColor(sf::Color::Blue);
 	//easyText.setFillColor(sf::Color::White);
 	easyText.setCharacterSize(65);
 	easyText.setPosition(120, 230);
@@ -401,7 +408,7 @@ int main()
 		// background music
 		sf::Time elapseSong = musicClock.getElapsedTime();
 		sf::Time elapseSong2 = musicClock2.getElapsedTime();
-		std::cout << elapseSong2.asSeconds() << std::endl;
+		//std::cout << elapseSong2.asSeconds() << std::endl;
 		if (windowtype != 3 && ingame == false && elapseSong.asSeconds() > 95)
 		{
 			BgSound1.play();
@@ -2305,6 +2312,7 @@ int main()
 			window.draw(easyText);
 			window.draw(normalText);
 			window.draw(hardText);
+			window.draw(Credit);
 			//window.draw(Menu.backRect);
 			for (int i = 0; i < 5; i++)
 			{

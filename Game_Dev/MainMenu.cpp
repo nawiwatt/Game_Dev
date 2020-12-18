@@ -26,12 +26,11 @@ MainMenu::MainMenu()
 	exit.setOutlineThickness(3);
 	startRect.setPosition(22, 400);
 	startRect.setSize(sf::Vector2f(400, 72));
-	indexRect.setPosition(22, 500);
-	indexRect.setSize(sf::Vector2f(400, 72));
 	leaderRect.setPosition(22, 600);
 	leaderRect.setSize(sf::Vector2f(400, 72));
 	exitRect.setPosition(22, 700);
 	exitRect.setSize(sf::Vector2f(400, 72));
+	rect.setPosition(0,0);
 	rect.setSize(sf::Vector2f(2, 2));
 	backtext.setFillColor(sf::Color::Green);
 	backtext.setCharacterSize(60);
